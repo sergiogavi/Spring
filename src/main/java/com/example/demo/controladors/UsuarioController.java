@@ -1,6 +1,7 @@
 package com.example.demo.controladors;
 
 
+import com.example.demo.dao.UsuarioDao;
 import com.example.demo.model.Usuario;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-class UsuarioController {
+class UsuarioController{
 
     @RequestMapping(value = "usuario/{id}")
     public Usuario getUsuario(@PathVariable Long id){
