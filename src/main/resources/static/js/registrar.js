@@ -25,5 +25,9 @@ async function registrarUsuarios(){
         },
         body: JSON.stringify(datos)
       });
+      alert("La cuenta ha sido registrada con exito");
+
+      window.location.href='login.html';
+
     }
 
