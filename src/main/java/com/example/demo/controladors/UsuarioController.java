@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 class UsuarioController{
 
@@ -36,6 +36,17 @@ class UsuarioController{
         if(!validarToken(token)){ return null;}
             return  usuarioDao.getUsuario();
         }
+
+
+    @RequestMapping(value = "api/prueba", method = RequestMethod.GET)
+    public String getMensaje(){
+        return  "hola desde server";
+    }
+
+
+
+
+
 
     private boolean validarToken(String token){
         String usuarioId = jwtUtil.getKey(token);
