@@ -39,8 +39,8 @@ class UsuarioController{
 
 
     @RequestMapping(value = "api/prueba", method = RequestMethod.GET)
-    public String getMensaje(){
-        return  "hola desde server";
+    public List<Usuario> getMensaje(){
+        return  usuarioDao.getUsuario();
     }
 
 
