@@ -39,7 +39,7 @@ class UsuarioController{
 
 
     @RequestMapping(value = "api/prueba", method = RequestMethod.GET)
-    public List<Usuario> getMensaje(){
+    public List<Usuario> getUsuario(){
         return  usuarioDao.getUsuario();
     }
 

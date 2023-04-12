@@ -2,7 +2,6 @@
 $(document).ready(function() {
 
 });
-
 async function iniciarSesion(){
 
     let datos = {};
