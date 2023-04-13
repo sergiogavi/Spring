@@ -4,6 +4,7 @@ import com.example.demo.model.Hilo;
 
 import java.util.List;
 
+import com.example.demo.model.Mensaje;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -30,12 +31,19 @@ public class HiloDaoImp implements HiloDao{
         return entityManager.createQuery(query2).getResultList();
     }
 
-    public String getMsg(){
-        return "mensaje desde server";
+    @Override
+    public List<Mensaje> getHiloMsg(Long id) {
+        String query3= "FROM Mensaje WHERE id='"+id+"'";
+        return entityManager.createQuery(query3).getResultList();
+    }
+
+    @Override
+    public List<Mensaje> getMsg() {
+        String query4= "FROM Mensaje";
+        return entityManager.createQuery(query4).getResultList();
     }
     @Override
     public void eliminar(Long id) {
-
     }
 
     @Override
@@ -46,5 +54,20 @@ public class HiloDaoImp implements HiloDao{
     @Override
     public Hilo obtenerMensajes(Hilo hilo) {
         return null;
+    }
+
+    @Override
+    public Mensaje PushMsg(Mensaje mensaje){
+        String query= "FROM Mensaje";
+        List<Mensaje> lista= entityManager.createQuery(query)
+                .setParameter("id",mensaje.getId())
+                .setParameter("mensaje",mensaje.getMensaje())
+                .setParameter("publicador",mensaje.getPublicador())
+                .getResultList();
+        if(lista.isEmpty()){
+            return null;
+        }else{
+            return lista.get(0);
+        }
     }
 }

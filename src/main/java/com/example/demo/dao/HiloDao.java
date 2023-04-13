@@ -1,9 +1,13 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.Hilo;
-import com.example.demo.model.Usuario;
+import com.example.demo.model.Mensaje;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
 import java.util.List;
 public interface HiloDao {
+
 
     List<Hilo> getHilo();
 
@@ -16,5 +20,10 @@ public interface HiloDao {
 
     List<Hilo> getHiloId(Long id);
 
-    String getMsg();
+    List<Mensaje> getHiloMsg(Long id);
+
+    List<Mensaje> getMsg();
+
+     Mensaje PushMsg(Mensaje mensaje);
+
 }
