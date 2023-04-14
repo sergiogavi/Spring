@@ -56,7 +56,7 @@ public class HiloDaoImp implements HiloDao{
 
     @Override
     public void registrarMensajes(Hilo hilo) {
-
+        entityManager.merge(hilo);
     }
 
     @Override
