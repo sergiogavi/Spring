@@ -5,11 +5,15 @@ import com.example.demo.model.Hilo;
 import java.util.List;
 
 import com.example.demo.model.Mensaje;
+import com.example.demo.model.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @CrossOrigin(origins = "*")
@@ -19,6 +23,7 @@ public class HiloDaoImp implements HiloDao{
     @PersistenceContext
     //Entity manager sirve para realizar la conexión con la BD
     private EntityManager entityManager;
+
     @Override
     public List<Hilo> getHilo() {
         String query= "FROM Hilo";
@@ -42,6 +47,9 @@ public class HiloDaoImp implements HiloDao{
         String query4= "FROM Mensaje";
         return entityManager.createQuery(query4).getResultList();
     }
+
+
+
     @Override
     public void eliminar(Long id) {
     }
@@ -57,17 +65,11 @@ public class HiloDaoImp implements HiloDao{
     }
 
     @Override
-    public Mensaje PushMsg(Mensaje mensaje){
-        String query= "FROM Mensaje";
-        List<Mensaje> lista= entityManager.createQuery(query)
-                .setParameter("id",mensaje.getId())
-                .setParameter("mensaje",mensaje.getMensaje())
-                .setParameter("publicador",mensaje.getPublicador())
-                .getResultList();
-        if(lista.isEmpty()){
-            return null;
-        }else{
-            return lista.get(0);
-        }
+    public void PushMsg(Mensaje mensaje){
+        entityManager.merge(mensaje);
     }
+
+
+
+
 }

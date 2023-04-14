@@ -24,6 +24,5 @@ public interface HiloDao {
 
     List<Mensaje> getMsg();
 
-     Mensaje PushMsg(Mensaje mensaje);
-
+    void PushMsg(Mensaje mensaje);
 }

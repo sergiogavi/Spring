@@ -43,7 +43,7 @@ class HiloController{
 
 
     @RequestMapping(value = "api/sendMessage", method = RequestMethod.POST)
-    public void registrarMensajess(@RequestBody Mensaje mensaje){
+    public void registrarMensajes(@RequestBody Mensaje mensaje){
         hiloDao.PushMsg(mensaje);
     }
 
